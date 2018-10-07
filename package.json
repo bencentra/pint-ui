@@ -1,0 +1,36 @@
+{
+  "name": "pint-ui",
+  "version": "1.0.0",
+  "description": "Electron wrapper around pint for scaling homebrew recipes from BeerXML files",
+  "main": "main.js",
+  "scripts": {
+    "postinstall": "npx electron-rebuild",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bencentra/pint-ui.git"
+  },
+  "keywords": [
+    "pint",
+    "beer",
+    "homebrew",
+    "beerxml"
+  ],
+  "author": "Ben Centra <blcentra@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bencentra/pint-ui/issues"
+  },
+  "homepage": "https://github.com/bencentra/pint-ui#readme",
+  "dependencies": {
+    "@bencentra/pint": "^1.0.0",
+    "debug": "^4.0.1",
+    "mustache": "^3.0.0"
+  },
+  "devDependencies": {
+    "electron": "^3.0.2",
+    "electron-rebuild": "^1.8.2"
+  }
+}

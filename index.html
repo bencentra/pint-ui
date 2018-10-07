@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pint</title>
+</head>
+<body>
+  <!-- All of the Node.js APIs are available in this renderer process. -->
+  <h1>Pint</h1>
+  <p>
+    <label for="pint-batch-size">Batch Size:</label>
+    <input type="number" id="pint-batch-size" value="1.1"/>
+  </p>
+  <p>
+    <button id="pint-file-select">Select File</button>
+  </p>
+  <div id="pint-recipe-target">No recipe selected</div>
+  <hr>
+  <p><em>We are using Node.js <script>document.write(process.versions.node)</script>,
+  Chromium <script>document.write(process.versions.chrome)</script>,
+  and Electron <script>document.write(process.versions.electron)</script>.</em></p>
+  
+  <script src="./src/vendor/zepto.min.js"></script>
+  <script>
+    // You can also require other files to run in this process
+    require('./src/renderer-process/select-file');
+  </script>
+</body>
+</html>

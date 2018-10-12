@@ -11,13 +11,13 @@ function createWindow () {
     height: 600, 
     title: 'Pint'
   });
-  mainWindow.maximize();
 
   // Load the index.html of the app
   mainWindow.loadFile('index.html')
 
   // Open the DevTools
-  mainWindow.webContents.openDevTools()
+  // mainWindow.maximize();
+  // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

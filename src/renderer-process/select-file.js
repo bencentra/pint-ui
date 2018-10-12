@@ -60,10 +60,10 @@ const template = `
 
 // Mustache template functions, context will be bound correctly
 function fermentable() {
-  return `<tr><td>${this.name}</td><td>${this.amount}${this.unit}</td></tr>`;
+  return `<tr><td>${this.name}</td><td>${this.amount} ${this.unit}</td></tr>`;
 }
 function hopOrMisc() {
-  return `<tr><td>${this.name}</td><td>${this.amount}${this.unit}</td><td>${this.time}</td></tr>`;
+  return `<tr><td>${this.name}</td><td>${this.amount} ${this.unit}</td><td>${this.time}</td></tr>`;
 }
 function yeast() {
   return `<p>${this.name} (${this.brand})</p>`;

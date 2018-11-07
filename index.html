@@ -6,63 +6,58 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pint</title>
   <link href="./node_modules/milligram/dist/milligram.min.css" rel="stylesheet" type="text/css"/>
-  <style>
-    body {
-      padding-right: 6px;
-      padding-left: 6px;
-      padding-bottom: 40px;
-    }
-    .debug-info {
-      font-size: .8em;
-      font-style: italic;
-    }
-    .align-right {
-      text-align: right;
-    }
-    .fixed-bottom {
-      border-top: 1px solid #eee;
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      background: white;
-    }
-  </style>
+  <link href="./assets/css/main.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
   <!-- All of the Node.js APIs are available in this renderer process. -->
-  <div class="container">
+  <div class="container" id="pint-header">
     <div class="row">
       <div class="column">
         <h1>Pint</h1>
       </div>
       <div class="column">
-        <p class="align-right" style="margin-top: 1em">Scale BeerXML files to your ideal batch size!</p>
+        <p class="align-right" style="margin-top: 1em;">Scale BeerXML files to your ideal batch size!</p>
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container" id="pint-controls">
     <div class="row">
+      <div class="column">
+        <label for="pint-batch-size">Batch Size (Gallons):</label>
+        <input type="number" id="pint-batch-size" value="5"/>
+      </div> 
       <div class="column">
         <label for="pint-file-select">BeerXML File:</label>
         <button class="button-outline" id="pint-file-select">Select File</button>
+        <p style="display: none" id="pint-file-name"></p>
       </div>
-      <div class="column">
-        <label for="pint-batch-size">Batch Size:</label>
-        <input type="number" id="pint-batch-size" value="1.1"/>
-      </div> 
     </div>
   </div>
-  </p>
-  <div id="pint-recipe-target">No recipe selected</div>
+  <div class="container" id="pint-recipe" style="display: none;">
+    <div class="row">
+      <div class="column">
+        <div id="pint-recipe-target">No recipe selected</div>
+      </div>
+    </div>
+    <div class="row screen-only">
+      <div class="column">
+        <button id="pint-refill">Select Another Recipe</button>
+        <button id="pint-print-recipe">Save Recipe to PDF</button>
+      </div>
+    </div>
+  </div>
   <div class="fixed-bottom">
     <span class="debug-info">We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.</span>
   </div>
+  <div class="print-only">
+    <p>Made with Pint: <a href="https://github.com/bencentra/pint-ui">github.com/bencentra/pint-ui</a></p>
+  </div>
   <script>
     // You can also require other files to run in this process
     require('./src/renderer-process/select-file');
+    require('./src/renderer-process/print-recipe');
   </script>
 </body>
 </html>

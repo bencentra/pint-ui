@@ -1,0 +1,47 @@
+body {
+  padding-right: 6px;
+  padding-left: 6px;
+  padding-bottom: 40px;
+}
+.debug-info {
+  font-size: .8em;
+  font-style: italic;
+}
+.align-right {
+  text-align: right;
+}
+.fixed-bottom {
+  border-top: 1px solid #eee;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: white;
+}
+.print-only {
+  display: none;
+}
+.screen-only {
+  display: block;
+}
+
+@media print {
+  body {
+    padding-bottom: 0;
+  }
+  #pint-header {
+    display: none;
+  }
+  #pint-controls {
+    display: none;
+  }
+  .fixed-bottom {
+    display: none;
+  }
+  .print-only {
+    display: block;
+  }
+  .screen-only {
+    display: none;
+  }
+}

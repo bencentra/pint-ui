@@ -52,3 +52,4 @@ app.on('activate', function () {
 
 // Load custom main-process code
 require('./src/main-process/open-file');
+require('./src/main-process/print-pdf');

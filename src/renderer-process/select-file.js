@@ -3,10 +3,6 @@ const Mustache = require('mustache');
 const debug = require('../debug');
 const log = debug('SelectFile');
 
-const fileSelectBtn = document.getElementById('pint-file-select');
-const batchSizeInput = document.getElementById('pint-batch-size');
-const recipeOutput = document.getElementById('pint-recipe-target');
-
 // Mustache template for a recipe
 const template = `
 <div class="pint-recipe">
@@ -69,6 +65,13 @@ function yeast() {
   return `<p>${this.name} (${this.brand})</p>`;
 }
 
+const fileSelectBtn = document.getElementById('pint-file-select');
+const fileName = document.getElementById('pint-file-name');
+const recipeZone = document.getElementById('pint-recipe');
+const batchSizeInput = document.getElementById('pint-batch-size');
+const recipeOutput = document.getElementById('pint-recipe-target');
+const refillBtn = document.getElementById('pint-refill');
+
 fileSelectBtn.addEventListener('click', (event) => {
   const batchSize = parseFloat(batchSizeInput.value);
   log('selecting recipe', batchSize);
@@ -77,7 +80,6 @@ fileSelectBtn.addEventListener('click', (event) => {
 
 ipcRenderer.on('recipe-selected', (event, recipe) => {
   log('recipe selected', recipe, event);
-  console.log(recipe);
   const mustacheRecipe = Object.assign({}, recipe, {
     hasMisc: recipe.ingredients.misc && recipe.ingredients.misc.length > 0,
     methods: {
@@ -87,4 +89,14 @@ ipcRenderer.on('recipe-selected', (event, recipe) => {
     }
   });
   recipeOutput.innerHTML = Mustache.render(template, mustacheRecipe);
+  recipeZone.style.display = 'block';
+  fileName.style.display = 'block';
+  fileName.innerHTML = recipe.data.name;
+  fileSelectBtn.style.display = 'none';
+});
+
+refillBtn.addEventListener('click', (event) => {
+  window.scrollTo(0, 0);
+  fileName.style.display = 'none';
+  fileSelectBtn.style.display = 'block';
 });

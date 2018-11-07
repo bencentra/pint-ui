@@ -22,9 +22,5 @@ ipcMain.on('select-recipe', (event, batchSize) => {
       const recipe = parseRecipe(files[0], batchSize);
       event.sender.send('recipe-selected', recipe);
     }
-  })
-});
-
-ipcMain.on('open-error-dialog', (event) => {
-  dialog.showErrorBox('An Error Message', 'Demonstrating an error message.')
+  });
 });
